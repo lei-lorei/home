@@ -205,6 +205,81 @@ h1 {
 .artwork:hover .info {
   opacity: 1;
 }
+
+.product-options {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+
+  transition:
+    max-height 0.6s ease,
+    opacity 0.4s ease,
+    margin-top 0.6s ease;
+}
+
+.artwork.open .product-options {
+  max-height: 180px;
+  opacity: 1;
+  margin-top: 18px;
+}
+
+.product-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 280px;
+  margin: 8px auto;
+
+  padding: 8px 0;
+
+  color: #C4C4C4;
+  font-size: 12px;
+  letter-spacing: 1px;
+
+  border-bottom: 1px solid rgba(203,190,190,0.2);
+
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+}
+
+.product-option:hover {
+  opacity: 1;
+}
+
+.add-to-basket,
+.view-full-image {
+  display: block;
+
+  margin: 12px auto 0;
+
+  background: none;
+  border: none;
+
+  color: #C4C4C4;
+
+  font-family: Commit Mono, monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  opacity: 0.6;
+
+  transition: opacity 0.3s ease;
+}
+
+.add-to-basket:hover,
+.view-full-image:hover {
+  opacity: 1;
+}
+
+.view-full-image {
+  margin-top: 8px;
+  font-size: 10px;
+}
   
 #lightbox {
   display: none;
@@ -338,114 +413,312 @@ footer {
   <img
     src="darling-print.jpg"
     data-caption="darling, you'll be okay., 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    darling, you'll be okay., 2026<br>
-   
   </div>
+
+  <div class="product-options">
+
+  <div class="product-option">
+    <span>4x6″ · Watercolour board</span>
+    <span>£8</span>
+  </div>
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
 </div>  
 
 <div class="artwork">
   <img
     src="lipstick-print.jpg"
     data-caption="laɪ, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    laɪ, 2026<br>
-   
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>12x17″ · Silk 170gsm poster</span>
+    <span>£10</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>  
   
 <div class="artwork">
   <img
     src="Lo-print.jpg"
     data-caption="Lo, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Lo, 2026<br>
-   
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>  
   
 <div class="artwork">
   <img
     src="Job.-print.jpg"
     data-caption="Job., 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Job., 2026<br>
-   
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>  
   
 <div class="artwork">
   <img
     src="canary-print.jpg"
     data-caption="canary, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    canary, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>  
 
 <div class="artwork">
   <img
     src="Belladonna, bella-donna-print.jpg"
     data-caption="Belladonna, bella-donna, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Belladonna, bella-donna, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>
 
 <div class="artwork">
   <img
     src="Nymphaea-print.jpg"
     data-caption="Nymphaea, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Nymphaea, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>
 
 <div class="artwork">
   <img
     src="Fish Rave-print.jpg"
     data-caption="Fish Rave, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Fish Rave, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>
   
 <div class="artwork">
   <img
     src="Dancing in the Dark-print.jpg"
     data-caption="Dancing in the Dark, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Dancing in the Dark, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>
 
 <div class="artwork">
   <img
     src="orcas in the bay-print.jpg"
     data-caption="Orcas in the bay, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    Orcas in the bay, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>
   
 <div class="artwork">
   <img
     src="dance, red spider lilies-print.jpg"
     data-caption="火树银花, 2026"
-    onclick="openImage(this)">
+    onclick="toggleProduct(this)">
   <div class="info">
    火树银花, 2026<br>
   </div>
+
+   <div class="product-options">
+
+  <div class="product-option">
+    <span>5x7″ · Hahnemühle German etching</span>
+    <span>£8</span>
+  </div>
+
+  <button class="add-to-basket">
+    add to basket
+  </button>
+
+  <button class="view-full-image" onclick="openImage(this.closest('.artwork').querySelector('img'))">
+    view full image
+  </button>
+
+</div>
+  
 </div>
 
 </div>
@@ -479,6 +752,22 @@ let currentIndex = 0;
 const images = Array.from(
   document.querySelectorAll(".artwork img")
 );
+
+function toggleProduct(img) {
+
+  const artwork = img.closest(".artwork");
+
+  const isOpen = artwork.classList.contains("open");
+
+  document.querySelectorAll(".artwork.open").forEach(function(item) {
+    item.classList.remove("open");
+  });
+
+  if (!isOpen) {
+    artwork.classList.add("open");
+  }
+
+}
   
 function openImage(img) {
 
