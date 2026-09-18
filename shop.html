@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+  background: #282020;
+  color: #A28B8B;
+  font-family: Commit Mono, monospace;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+  
+h1 {
+  font-weight: 100;
+  letter-spacing: 6px;
+  font-size: 22px;
+
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+
+  0% {
+    opacity: 0.35;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.25;
+  }
+
+}
+
+
+.subtitle {
+
+    opacity:0;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    color:#CBBEBE;
+
+    animation:fadeIn 2s forwards;
+
+    animation-delay:1s;
+
+    transition:opacity 2s ease;
+
+    height:45px;
+
+    line-height:1.6;
+
+}
+
+.subtitle-citation {
+
+    display:inline-block;
+
+    margin-left: 15px;
+
+}
+  
+.home-link {
+
+  display: inline-block;
+
+  margin-top: 20px;
+
+  margin-bottom: 15px;
+
+  color: #CBBEBE;
+
+  text-decoration: none;
+
+  letter-spacing: 3px;
+
+  font-size: 14px;
+
+  opacity: 0.6;
+
+  transition: opacity 0.3s ease;
+}
+
+.home-link:hover {
+  opacity: 1;
+}
+  
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+    transition: opacity .45s ease;
+}
+
+.gallery.fade-out{
+    opacity:0;
+}
+
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:600px){
+
+   .subtitle {
+
+      height:60px;
+
+      font-size:11px;
+
+      line-height:1.6;
+
+   }
+
+    .gallery{
+        grid-template-columns:1fr;
+        gap:30px;
+        padding:20px;
+    }
+
+    .nav-btn{
+        font-size:13px;
+        padding:4px 6px;
+    }
+
+    .page-indicator{
+        min-width:60px;
+    }
+
+}
+  
+    .nav-btn{
+        font-size:13px;
+    }
+
+    .page-indicator{
+        min-width:60px;
+    }
+
+}
+
+.artwork{
+    text-align:center;
+    opacity:1;
+    filter:blur(0px);
+    transform:translateY(0);
+    transition:
+        opacity .6s ease,
+        transform .6s ease,
+        filter .6s ease;
+}
+
+.artwork.hidden{
+    opacity:0;
+    transform:translateY(10px);
+    filter:blur(6px);
+}
+  
+.artwork img {
+  width: 100%;
+  max-height: 350px;
+
+  object-fit: contain;
+
+  cursor: pointer;
+
+  opacity: 1;
+
+  transition: opacity 0.5s ease;
+}
+
+.artwork:hover {
+  opacity: 1 !important;
+}
+
+.info {
+  margin-top: 10px;
+
+  color: #CBBEBE;
+  font-size: 15px;
+  font-family: Commit Mono, monospace;
+  letter-spacing: 2px;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.artwork:hover .info {
+  opacity: 1;
+}
+  
+#lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(20,20,20,0.5);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+  
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 75vh;
+}
+
+@media (max-width: 768px) {
+
+  .artwork {
+    animation: none;
+  }
+
+} 
+#mobile-nav {
+  display: none !important;
+}
+
+#lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 90vw;
+  max-height: 90vh;
+
+  position: relative;
+}
+
+#lightbox-caption {
+
+  margin-top: 15px;
+
+  margin-left: 25px;
+
+  color: #DFD7D7;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+}
+
+#archive-content {
+
+  opacity: 0;
+
+  transition: opacity 2s ease;
+}
+  
+#prev-btn,
+#next-btn {
+
+  position: absolute;
+
+  background: none;
+  border: none;
+
+  color: #DFD7D7;
+
+  font-size: 22px;
+
+  opacity: 0.5;
+
+  transition: opacity 0.3s ease;
+
+  cursor: pointer;
+}
+
+#prev-btn {
+  left: -60px;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+#next-btn {
+  right: -60px;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+#prev-btn:hover,
+#next-btn:hover {
+  opacity: 1;
+}
+  
+footer {
+  margin-top: 100px;
+
+  font-size: 11px;
+
+  opacity: 0.5;
+
+  letter-spacing: 2px;
+}
+  
+</style>
+</head>
+
+<body>
+
+<div id="archive-content">
+  
+<a class="home-link" href="index.html">
+  home
+</a>
+  
+<h1>shop</h1>
+<p class="subtitle">
+  select prints
+</p>
+
+<div class="gallery">
+
+<div class="artwork">
+  <img
+    src="Lo.jpeg"
+    data-caption="Lo, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Lo, 2026<br>
+   
+  </div>
+</div>  
+  
+<div class="artwork">
+  <img
+    src="Job..jpeg"
+    data-caption="Job., 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Job., 2026<br>
+   
+  </div>
+</div>  
+  
+<div class="artwork">
+  <img
+    src="canary.jpeg"
+    data-caption="canary, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   canary, 2026<br>
+  </div>
+</div>  
+
+<div class="artwork">
+  <img
+    src="DAS MONSTRUM IIST SO GROSS GEWORDEN.jpeg"
+    data-caption="DAS MONSTRUM IST SO GROSS GEWORDEN, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   DAS MONSTRUM IST SO GROSS GEWORDEN, 2026<br>
+  </div>
+</div>  
+  
+<div class="artwork">
+  <img
+    src="κύκνειον ᾆσμα.jpeg"
+    data-caption="κύκνειον ᾆσμα, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   κύκνειον ᾆσμα, 2026<br>
+  </div>
+</div>  
+  
+<div class="artwork">
+  <img
+    src="naoko.jpeg"
+    data-caption="naoko, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Naoko, 2026<br>
+   📽 The Wind Rises, Hayao Miyazaki, 2013.
+  </div>
+</div>  
+
+<div class="artwork">
+  <img
+    src="Belladonna, bella-donna.jpeg"
+    data-caption="Belladonna, bella-donna, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Belladonna, bella-donna, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="wrath of ra.jpeg"
+    data-caption="wrath of ra, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   wrath of ra, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="cost..jpeg"
+    data-caption="cost., 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   cost., 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="minnesota creek.jpeg"
+    data-caption="minnesota creek, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   minnesota creek, 2026<br>
+   ♪ Opera House, Cigarettes After Sex, 2017.
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="delilah.jpeg"
+    data-caption="delilah, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   delilah, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="valerie.jpeg"
+    data-caption="valerie, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   valerie, 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="he goes along just as a waterlily.jpeg"
+    data-caption="Nymphaea, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Nymphaea, 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="Fish Rave.jpeg"
+    data-caption="Fish Rave, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Fish Rave, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="Dancing in the Dark.jpeg"
+    data-caption="Dancing in the Dark, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Dancing in the Dark, 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="orcas in the bay.jpeg"
+    data-caption="Orcas in the bay, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Orcas in the bay, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="i've got the winter bleus.jpg"
+    data-caption="i've got the winter bleus, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   i've got the winter bleus, 2026<br>
+   ♪ ヒトガワリ, きくおはな, 2017.
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="biPOLAR i.JPG"
+    data-caption="microdosin', 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   microdosin', 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="dyfemoyb (prelude).JPG"
+    data-caption="dyfemoyb (prelude), 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   don't you feel eyes moving over your body?, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="fireboy and watergirl 3.jpg"
+    data-caption="fireboy and watergirl 3, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   fireboy and watergirl 3, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="i eat boys up.jpg"
+    data-caption="synaesthesia, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   synaesthesia, 2026<br>
+  </div>
+</div>  
+  
+<div class="artwork">
+  <img
+    src="dance, red spider lilies.jpg"
+    data-caption="火树银花, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   火树银花, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="Persephone.jpg"
+    data-caption="Persephone, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   Persephone, 2026<br>
+   ♪ Persephone, Cocteau Twins, 1984.
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="Ambush.JPG"
+    data-caption="AᛗBUSH, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   AᛗBUSH, 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="half bloom.jpg"
+    data-caption="half bloom, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   half bloom, 2026<br>
+  </div>
+</div>
+
+ <div class="artwork">
+  <img
+    src="handle with care.jpg"
+    data-caption="handle with care, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+   handle with care, 2026<br>
+  </div>
+</div>
+  
+<div class="artwork">
+  <img
+    src="she loves me, she loves me not.jpg"
+    data-caption="love me not., 2026"
+    onclick="openImage(this)">
+  <div class="info">
+    love me not, 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+    src="見えて.jpg"
+    data-caption="見えて, 2026"
+    onclick="openImage(this)">
+  <div class="info">
+    見えて, 2026<br>
+  </div>
+</div>
+
+<div class="artwork">
+  <img
+  src="Ayurveda.jpg"
+  data-caption="Ayurveda, 2026 • ♪ Secret Garden, Madonna, 1992."
+  onclick="openImage(this)">
+  <div class="info">
+    Ayurveda, 2026<br>
+    ♪ Secret Garden, Madonna, 1992.
+  </div>
+</div>
+
+
+<div class="artwork">
+  <img 
+    src="Gibbon.jpeg" 
+    data-caption="ɡɪbəs, 2026 • ♪ Wax and Wane, Cocteau Twins, 1982."
+    onclick="openImage(this)">
+  <div class="info">
+    ɡɪbəs, 2026<br>
+    ♪ Wax and Wane, Cocteau Twins, 1982.
+  </div>
+</div>
+
+<div class="artwork">
+  <img src="Nude.jpeg" 
+    data-caption="Nude, 2026 • ♪ Nude, Radiohead, 2008."
+    onclick="openImage(this)">
+  <div class="info">
+    Nude, 2026<br>
+    ♪ Nude, Radiohead, 2008.
+  </div>
+</div>
+  
+<div class="artwork">
+  <img src="Untitled_1.jpeg" 
+    data-caption="SEED., 2025"
+    onclick="openImage(this)">
+  <div class="info">
+    SEED., 2025<br>
+  </div>
+</div>
+
+</div>
+  
+<div id="lightbox" onclick="closeImage()">
+
+ <div id="lightbox-content">
+
+  <button id="prev-btn">←</button>
+
+  <img id="lightbox-img">
+
+  <button id="next-btn">→</button>
+
+  <div id="lightbox-caption"></div>
+
+</div>
+
+</div>
+
+<footer>
+  © lily deng • 2026–
+</footer>
+</div>
+  
+<script>
+let lastScrollTop = 0;
+  
+let currentIndex = 0;
+
+const images = Array.from(
+  document.querySelectorAll(".artwork img")
+);
+  
+function openImage(img) {
+
+  currentIndex = images.indexOf(img);
+
+  document.getElementById("lightbox").style.display = "flex";
+
+  document.getElementById("lightbox-img").src = img.src;
+
+  document.getElementById("lightbox-caption").innerHTML =
+    img.dataset.caption;
+}
+
+function closeImage() {
+  document.getElementById("lightbox").style.display = "none";
+}
+  
+function showImage(index) {
+
+  currentIndex = index;
+
+  const img = images[currentIndex];
+
+  document.getElementById("lightbox-img").src = img.src;
+
+  document.getElementById("lightbox-caption").innerHTML =
+    img.dataset.caption;
+}
+
+document.getElementById("next-btn").onclick = function(event) {
+
+  event.stopPropagation();
+
+  showImage((currentIndex + 1) % images.length);
+
+};
+
+document.getElementById("prev-btn").onclick = function(event) {
+
+  event.stopPropagation();
+
+  showImage(
+    (currentIndex - 1 + images.length) % images.length
+  );
+
+};
+  
+function updateOpacity() {
+
+  const artworks =
+    document.querySelectorAll(".artwork");
+
+  const screenCenter =
+    window.innerHeight / 2;
+
+  artworks.forEach(function(item) {
+
+    const rect =
+      item.getBoundingClientRect();
+
+    const itemCenter =
+      rect.top + rect.height / 2;
+
+    const distance =
+      Math.abs(itemCenter - screenCenter);
+
+    const maxDistance =
+      window.innerHeight / 2;
+
+    let opacity =
+      1 - distance / maxDistance;
+
+    opacity =
+      Math.max(0.25, opacity);
+
+    item.style.opacity = opacity;
+    
+  const caption = item.querySelector(".info");
+
+if (caption) {
+  caption.style.opacity = Math.max(0.4, opacity);
+}
+
+  });
+
+}
+
+window.addEventListener("scroll", updateOpacity);
+
+updateOpacity();
+
+</script>
+
+</body>
+</html>
