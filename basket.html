@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+  background: #282020;
+  color: #A28B8B;
+  font-family: Commit Mono, monospace;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 15px;
+
+  color: #CBBEBE;
+  text-decoration: none;
+
+  letter-spacing: 3px;
+  font-size: 14px;
+
+  opacity: 0.6;
+
+  transition: opacity 0.3s ease;
+}
+
+.home-link:hover {
+  opacity: 1;
+}
+
+.basket-link {
+  position: absolute;
+
+  top: 25px;
+  right: 25px;
+
+  color: #CBBEBE;
+  text-decoration: none;
+
+  font-size: 11px;
+  letter-spacing: 2px;
+
+  opacity: 0.6;
+
+  transition: opacity 0.3s ease;
+}
+
+.basket-link:hover {
+  opacity: 1;
+}
+  
+h1 {
+  font-weight: 100;
+  letter-spacing: 6px;
+  font-size: 22px;
+
+  opacity: 0;
+
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+#basket {
+  max-width: 700px;
+  margin: 60px auto 0;
+}
+
+.basket-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+  padding: 25px 0;
+
+  border-bottom: 1px solid rgba(203,190,190,0.2);
+
+  text-align: left;
+
+}
+
+.basket-item img {
+
+  width: 120px;
+  height: 120px;
+
+  object-fit: contain;
+
+}
+
+.item-details {
+
+  flex: 1;
+
+}
+
+.item-title {
+
+  color: #CBBEBE;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 10px;
+
+}
+
+.item-size {
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+
+  opacity: 0.7;
+
+  margin-bottom: 8px;
+
+}
+
+.item-price {
+
+  font-size: 12px;
+
+  letter-spacing: 1px;
+
+}
+
+.quantity {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 12px;
+
+  font-size: 12px;
+
+}
+
+.quantity button {
+
+  background: none;
+
+  border: none;
+
+  color: #CBBEBE;
+
+  font-family: Commit Mono, monospace;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  opacity: 0.6;
+
+}
+
+.quantity button:hover {
+
+  opacity: 1;
+
+}
+
+.remove {
+
+  display: block;
+
+  margin-top: 10px;
+
+  padding: 0;
+
+  background: none;
+
+  border: none;
+
+  color: #CBBEBE;
+
+  font-family: Commit Mono, monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  opacity: 0.45;
+
+}
+
+.remove:hover {
+
+  opacity: 1;
+
+}
+
+#basket-summary {
+
+  margin-top: 40px;
+
+  text-align: right;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+}
+
+#total {
+
+  color: #CBBEBE;
+
+}
+
+#empty {
+
+  margin-top: 80px;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  opacity: 0.6;
+
+}
+
+.checkout {
+
+  display: inline-block;
+
+  margin-top: 25px;
+
+  padding: 10px 20px;
+
+  background: none;
+
+  border: 1px solid rgba(203,190,190,0.35);
+
+  color: #CBBEBE;
+
+  font-family: Commit Mono, monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+
+}
+
+.checkout:hover {
+
+  opacity: 0.7;
+
+}
+
+footer {
+
+  margin-top: 100px;
+
+  font-size: 11px;
+
+  opacity: 0.5;
+
+  letter-spacing: 2px;
+
+}
+
+@media (max-width: 600px) {
+
+  #basket {
+    margin-top: 40px;
+  }
+
+  .basket-item {
+
+    gap: 15px;
+
+    align-items: flex-start;
+
+  }
+
+  .basket-item img {
+
+    width: 90px;
+    height: 90px;
+
+  }
+
+  .item-title {
+
+    font-size: 12px;
+
+  }
+
+  #basket-summary {
+
+    text-align: center;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="home-link" href="shop.html">
+  shop
+</a>
+  
+<a class="basket-link" href="basket.html">
+  basket
+</a>
+  
+<h1>basket</h1>
+
+<div id="basket"></div>
+
+<div id="empty">
+  your basket is empty
+</div>
+
+<div id="basket-summary">
+
+  total&nbsp;&nbsp;
+  <span id="total">£0.00</span>
+
+  <br>
+
+  <button class="checkout">
+    checkout
+  </button>
+
+</div>
+
+<footer>
+  © lily deng • 2026–
+</footer>
+
+
+<script>
+
+function loadBasket() {
+
+  const basket =
+    JSON.parse(localStorage.getItem("basket")) || [];
+
+  const container =
+    document.getElementById("basket");
+
+  const empty =
+    document.getElementById("empty");
+
+  const summary =
+    document.getElementById("basket-summary");
+
+  container.innerHTML = "";
+
+  let total = 0;
+
+  if (basket.length === 0) {
+
+    empty.style.display = "block";
+    summary.style.display = "none";
+
+    return;
+
+  }
+
+  empty.style.display = "none";
+  summary.style.display = "block";
+
+  basket.forEach(function(item, index) {
+
+    total += item.price * item.quantity;
+
+    const element =
+      document.createElement("div");
+
+    element.className = "basket-item";
+
+    element.innerHTML = `
+
+      <img src="${item.image}">
+
+      <div class="item-details">
+
+        <div class="item-title">
+          ${item.title}
+        </div>
+
+        <div class="item-size">
+          ${item.size} · Fine Art Paper
+        </div>
+
+        <div class="item-price">
+          £${item.price.toFixed(2)}
+        </div>
+
+        <div class="quantity">
+
+          <button onclick="changeQuantity(${index}, -1)">
+            −
+          </button>
+
+          <span>
+            ${item.quantity}
+          </span>
+
+          <button onclick="changeQuantity(${index}, 1)">
+            +
+          </button>
+
+        </div>
+
+        <button
+          class="remove"
+          onclick="removeItem(${index})"
+        >
+          remove
+        </button>
+
+      </div>
+
+    `;
+
+    container.appendChild(element);
+
+  });
+
+  document.getElementById("total").textContent =
+    "£" + total.toFixed(2);
+
+}
+
+
+function changeQuantity(index, change) {
+
+  const basket =
+    JSON.parse(localStorage.getItem("basket")) || [];
+
+  basket[index].quantity += change;
+
+  if (basket[index].quantity <= 0) {
+
+    basket.splice(index, 1);
+
+  }
+
+  localStorage.setItem(
+    "basket",
+    JSON.stringify(basket)
+  );
+
+  loadBasket();
+
+}
+
+
+function removeItem(index) {
+
+  const basket =
+    JSON.parse(localStorage.getItem("basket")) || [];
+
+  basket.splice(index, 1);
+
+  localStorage.setItem(
+    "basket",
+    JSON.stringify(basket)
+  );
+
+  loadBasket();
+
+}
+
+
+loadBasket();
+
+</script>
+
+</body>
+</html>
