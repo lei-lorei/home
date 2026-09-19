@@ -457,6 +457,7 @@ footer {
   <div
   class="product-option"
   data-size="4x6″"
+  data-material="Watercolour board"
   data-price="8"
   onclick="selectOption(this)"
   >
@@ -467,6 +468,7 @@ footer {
   <div 
   class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"   
   onclick="selectOption(this)"
   >
@@ -498,6 +500,7 @@ footer {
 
   <div class="product-option" 
   data-size="12x17″"
+  data-material="Silk 170gsm poster"
   data-price="10"  
   onclick="selectOption(this)"
   >
@@ -530,6 +533,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"    
   onclick="selectOption(this)"
   >
@@ -562,6 +566,7 @@ footer {
 
   <div class="product-option"
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -594,6 +599,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -626,6 +632,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)">
   <span>5x7″ · Hahnemühle German etching</span>
@@ -657,6 +664,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -689,6 +697,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -721,6 +730,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -753,6 +763,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -785,6 +796,7 @@ footer {
 
   <div class="product-option" 
   data-size="5x7″"
+  data-material="Hahnemühle German etching"
   data-price="8"  
   onclick="selectOption(this)"
   >
@@ -885,6 +897,9 @@ function addToBasket(button) {
   const size =
     selectedOption.dataset.size;
 
+  const material =
+    selectedOption.dataset.material;
+
   const price =
     parseFloat(selectedOption.dataset.price);
 
@@ -906,14 +921,15 @@ function addToBasket(button) {
 
   } else {
 
-    basket.push({
-      productId: productId,
-      title: title,
-      size: size,
-      price: price,
-      image: image,
-      quantity: 1
-    });
+  basket.push({
+    productId: productId,
+    title: title,
+    size: size,
+    material: material,
+    price: price,
+    image: image,
+    quantity: 1
+  });
 
   }
 
