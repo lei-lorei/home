@@ -456,6 +456,7 @@ footer {
 
   <div
   class="product-option"
+  data-product-id="darling-4x6"
   data-size="4x6″"
   data-material="Watercolour board"
   data-price="8"
@@ -467,6 +468,7 @@ footer {
 
   <div 
   class="product-option" 
+  data-product-id="darling-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"   
@@ -499,6 +501,7 @@ footer {
    <div class="product-options">
 
   <div class="product-option" 
+  data-product-id="lai-12x17"
   data-size="12x17″"
   data-material="Silk 170gsm poster"
   data-price="10"  
@@ -531,7 +534,8 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" 
+  <div class="product-option"
+  data-product-id="lo-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"    
@@ -565,6 +569,7 @@ footer {
    <div class="product-options">
 
   <div class="product-option"
+  data-product-id="job-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -597,7 +602,8 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" 
+  <div class="product-option"
+  data-product-id="canary-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -631,6 +637,7 @@ footer {
    <div class="product-options">
 
   <div class="product-option" 
+  data-product-id="belladonna-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -663,6 +670,7 @@ footer {
    <div class="product-options">
 
   <div class="product-option" 
+  data-product-id="nymphaea-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -695,7 +703,8 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" 
+  <div class="product-option"
+  data-product-id="fish-rave-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -729,6 +738,7 @@ footer {
    <div class="product-options">
 
   <div class="product-option" 
+  data-product-id="dancing-in-the-dark-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -762,6 +772,7 @@ footer {
    <div class="product-options">
 
   <div class="product-option" 
+  data-product-id="orcas-in-the-bay-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -794,7 +805,8 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" 
+  <div class="product-option"
+  data-product-id="orcas-in-the-bay-5x7"
   data-size="5x7″"
   data-material="Hahnemühle German etching"
   data-price="8"  
@@ -877,73 +889,48 @@ function selectOption(option) {
 }
 
 function addToBasket(button) {
-
   const artwork = button.closest(".artwork");
-
-  const selectedOption =
-    artwork.querySelector(".product-option.selected");
+  const selectedOption = artwork.querySelector(".product-option.selected");
 
   if (!selectedOption) {
     alert("please select a print size");
     return;
   }
 
-  const productId =
-    artwork.dataset.productId;
+  const productId = selectedOption.dataset.productId;
+  const title = artwork.querySelector(".info").innerText.trim();
+  const size = selectedOption.dataset.size;
+  const material = selectedOption.dataset.material;
+  const price = parseFloat(selectedOption.dataset.price);
+  const image = artwork.querySelector("img").src;
 
-  const title =
-    artwork.querySelector(".info").innerText.trim();
+  const basket = JSON.parse(localStorage.getItem("basket")) || [];
 
-  const size =
-    selectedOption.dataset.size;
-
-  const material =
-    selectedOption.dataset.material;
-
-  const price =
-    parseFloat(selectedOption.dataset.price);
-
-  const image =
-    artwork.querySelector("img").src;
-
-  const basket =
-    JSON.parse(localStorage.getItem("basket")) || [];
-
-  const existingItem =
-    basket.find(function(item) {
-      return item.productId === productId &&
-             item.size === size;
-    });
-
-  if (existingItem) {
-
-    existingItem.quantity += 1;
-
-  } else {
-
-  basket.push({
-    productId: productId,
-    title: title,
-    size: size,
-    material: material,
-    price: price,
-    image: image,
-    quantity: 1
+  const existingItem = basket.find(function(item) {
+    return item.productId === productId;
   });
 
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    basket.push({
+      productId: productId,
+      title: title,
+      size: size,
+      material: material,
+      price: price,
+      image: image,
+      quantity: 1
+    });
   }
 
-  localStorage.setItem(
-    "basket",
-    JSON.stringify(basket)
-  );
+  localStorage.setItem("basket", JSON.stringify(basket));
 
   button.textContent = "added ✓";
 
   setTimeout(function() {
     button.textContent = "add to basket";
   }, 1500);
-
 }
   
 function openImage(img) {
