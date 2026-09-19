@@ -416,7 +416,7 @@ footer {
 
 <div class="gallery">
   
-<div class="artwork">
+<div class="artwork" data-product-id="darling">
   <img
     src="darling-print.jpg"
     data-caption="darling, you'll be okay., 2026"
@@ -427,17 +427,27 @@ footer {
 
   <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>4x6″ · Watercolour board</span>
-    <span>£8</span>
+  <div
+  class="product-option"
+  data-size="4x6″"
+  data-price="8"
+  onclick="selectOption(this)"
+  >
+  <span>4x6″ · Watercolour board</span>
+  <span>£8</span>
   </div>
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div 
+  class="product-option" 
+  data-size="5x7″"
+  data-price="8"   
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -448,7 +458,7 @@ footer {
 </div>
 </div>  
 
-<div class="artwork">
+<div class="artwork" data-product-id="lai">
   <img
     src="lipstick-print.jpg"
     data-caption="laɪ, 2026"
@@ -459,12 +469,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>12x17″ · Silk 170gsm poster</span>
-    <span>£10</span>
+  <div class="product-option" 
+  data-size="12x17″"
+  data-price="10"  
+  onclick="selectOption(this)"
+  >
+  <span>12x17″ · Silk 170gsm poster</span>
+  <span>£10</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -476,7 +490,7 @@ footer {
   
 </div>  
   
-<div class="artwork">
+<div class="artwork" data-product-id="Lo">
   <img
     src="Lo-print.jpg"
     data-caption="Lo, 2026"
@@ -487,12 +501,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"    
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -504,7 +522,7 @@ footer {
   
 </div>  
   
-<div class="artwork">
+<div class="artwork" data-product-id="job">
   <img
     src="Job.-print.jpg"
     data-caption="Job., 2026"
@@ -515,12 +533,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option"
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -532,7 +554,7 @@ footer {
   
 </div>  
   
-<div class="artwork">
+<div class="artwork" data-product-id="canary">
   <img
     src="canary-print.jpg"
     data-caption="canary, 2026"
@@ -543,12 +565,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -560,7 +586,7 @@ footer {
   
 </div>  
 
-<div class="artwork">
+<div class="artwork" data-product-id="belladonna">
   <img
     src="Belladonna, bella-donna-print.jpg"
     data-caption="Belladonna, bella-donna, 2026"
@@ -571,12 +597,15 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)">
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -588,7 +617,7 @@ footer {
   
 </div>
 
-<div class="artwork">
+<div class="artwork" data-product-id="nymphaea">
   <img
     src="Nymphaea-print.jpg"
     data-caption="Nymphaea, 2026"
@@ -599,12 +628,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -616,7 +649,7 @@ footer {
   
 </div>
 
-<div class="artwork">
+<div class="artwork" data-product-id="fish-rave">
   <img
     src="Fish Rave-print.jpg"
     data-caption="Fish Rave, 2026"
@@ -627,12 +660,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -644,7 +681,7 @@ footer {
   
 </div>
   
-<div class="artwork">
+<div class="artwork" data-product-id="dancing-in-the-dark">
   <img
     src="Dancing in the Dark-print.jpg"
     data-caption="Dancing in the Dark, 2026"
@@ -655,12 +692,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -672,7 +713,7 @@ footer {
   
 </div>
 
-<div class="artwork">
+<div class="artwork" data-product-id="orcas-in-the-bay">
   <img
     src="orcas in the bay-print.jpg"
     data-caption="Orcas in the bay, 2026"
@@ -683,12 +724,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -700,7 +745,7 @@ footer {
   
 </div>
   
-<div class="artwork">
+<div class="artwork" data-product-id="huo-shu-yin-hua">
   <img
     src="dance, red spider lilies-print.jpg"
     data-caption="火树银花, 2026"
@@ -711,12 +756,16 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option" onclick="selectOption(this)">
-    <span>5x7″ · Hahnemühle German etching</span>
-    <span>£8</span>
+  <div class="product-option" 
+  data-size="5x7″"
+  data-price="8"  
+  onclick="selectOption(this)"
+  >
+  <span>5x7″ · Hahnemühle German etching</span>
+  <span>£8</span>
   </div>
 
-  <button class="add-to-basket">
+  <button class="add-to-basket" onclick="addToBasket(this)">
     add to basket
   </button>
 
@@ -785,6 +834,72 @@ function selectOption(option) {
   });
 
   option.classList.add("selected");
+
+}
+
+function addToBasket(button) {
+
+  const artwork = button.closest(".artwork");
+
+  const selectedOption =
+    artwork.querySelector(".product-option.selected");
+
+  if (!selectedOption) {
+    alert("please select a print size");
+    return;
+  }
+
+  const productId =
+    artwork.dataset.productId;
+
+  const title =
+    artwork.querySelector(".info").innerText.trim();
+
+  const size =
+    selectedOption.dataset.size;
+
+  const price =
+    parseFloat(selectedOption.dataset.price);
+
+  const image =
+    artwork.querySelector("img").src;
+
+  const basket =
+    JSON.parse(localStorage.getItem("basket")) || [];
+
+  const existingItem =
+    basket.find(function(item) {
+      return item.productId === productId &&
+             item.size === size;
+    });
+
+  if (existingItem) {
+
+    existingItem.quantity += 1;
+
+  } else {
+
+    basket.push({
+      productId: productId,
+      title: title,
+      size: size,
+      price: price,
+      image: image,
+      quantity: 1
+    });
+
+  }
+
+  localStorage.setItem(
+    "basket",
+    JSON.stringify(basket)
+  );
+
+  button.textContent = "added ✓";
+
+  setTimeout(function() {
+    button.textContent = "add to basket";
+  }, 1500);
 
 }
   
