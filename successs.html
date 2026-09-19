@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>thank you · Lei Lorei</title>
+
+<style>
+
+body {
+  background: #272727;
+  color: #808080;
+  font-family: Commit Mono, monospace;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 100;
+  letter-spacing: 5px;
+  font-size: 22px;
+  color: #C4C4C4;
+  margin-bottom: 25px;
+}
+
+p {
+  font-size: 13px;
+  letter-spacing: 1px;
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+.home-link {
+  margin-top: 25px;
+  color: #DBDBDB;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-size: 12px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.home-link:hover {
+  opacity: 1;
+}
+
+#error {
+  display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="success">
+
+    <h1>thank you</h1>
+
+    <p>
+      your order has been received.
+    </p>
+
+    <p>
+      🦢
+    </p>
+
+    <a class="home-link" href="index.html">
+      home
+    </a>
+
+  </div>
+
+  <div id="error">
+
+    <h1>something went wrong</h1>
+
+    <p>
+      we couldn't verify your payment.
+    </p>
+
+    <a class="home-link" href="basket.html">
+      return to basket
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+
+async function verifyPayment() {
+
+  const params = new URLSearchParams(
+    window.location.search
+  );
+
+  const sessionId = params.get("session_id");
+
+  if (!sessionId) {
+    document.getElementById("success").style.display = "none";
+    document.getElementById("error").style.display = "block";
+    return;
+  }
+
+  try {
+
+    const response = await fetch(
+      "https://shop-checkout-sbl3.vercel.app/api/verify-session?session_id="
+      + encodeURIComponent(sessionId)
+    );
+
+    const data = await response.json();
+
+    if (data.paid) {
+
+      localStorage.removeItem("basket");
+
+    } else {
+
+      document.getElementById("success").style.display = "none";
+      document.getElementById("error").style.display = "block";
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById("success").style.display = "none";
+    document.getElementById("error").style.display = "block";
+
+  }
+
+}
+
+verifyPayment();
+
+</script>
+
+</body>
+</html>
