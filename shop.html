@@ -232,20 +232,27 @@ h1 {
   max-width: 280px;
   margin: 8px auto;
 
-  padding: 8px 0;
+  padding: 9px 10px;
 
   color: #C4C4C4;
   font-size: 12px;
   letter-spacing: 1px;
 
-  border-bottom: 1px solid rgba(203,190,190,0.2);
+  border: 1px solid transparent;
 
   cursor: pointer;
 
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .product-option:hover {
+  opacity: 1;
+}
+
+.product-option.selected {
+  border-color: rgba(203,190,190,0.45);
   opacity: 1;
 }
 
@@ -420,12 +427,12 @@ footer {
 
   <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>4x6″ · Watercolour board</span>
     <span>£8</span>
   </div>
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -452,7 +459,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>12x17″ · Silk 170gsm poster</span>
     <span>£10</span>
   </div>
@@ -480,7 +487,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -508,7 +515,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -536,7 +543,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -564,7 +571,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -592,7 +599,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -620,7 +627,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -648,7 +655,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -676,7 +683,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -704,7 +711,7 @@ footer {
 
    <div class="product-options">
 
-  <div class="product-option">
+  <div class="product-option" onclick="selectOption(this)">
     <span>5x7″ · Hahnemühle German etching</span>
     <span>£8</span>
   </div>
@@ -766,6 +773,18 @@ function toggleProduct(img) {
   if (!isOpen) {
     artwork.classList.add("open");
   }
+
+}
+
+function selectOption(option) {
+
+  const artwork = option.closest(".artwork");
+
+  artwork.querySelectorAll(".product-option").forEach(function(item) {
+    item.classList.remove("selected");
+  });
+
+  option.classList.add("selected");
 
 }
   
