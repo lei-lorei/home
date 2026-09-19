@@ -354,7 +354,7 @@ footer {
 
   <br>
 
-  <button class="checkout">
+  <button class="checkout" onclick="checkout()">
     checkout
   </button>
 
@@ -460,7 +460,39 @@ function loadBasket() {
 
 }
 
+async function checkout() {
 
+  const basket =
+    JSON.parse(localStorage.getItem("basket")) || [];
+
+  if (basket.length === 0) {
+    alert("your basket is empty");
+    return;
+  }
+
+  const response = await fetch(
+    "https://shop-checkout-sbl3.vercel.app/api/checkout",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        basket: basket
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("unable to start checkout");
+  }
+
+}
+  
 function changeQuantity(index, change) {
 
   const basket =
