@@ -622,16 +622,6 @@ async function checkout() {
     button.textContent = "checkout";
   }
 }
-
-  const data = await response.json();
-
-  if (data.url) {
-    window.location.href = data.url;
-  } else {
-    alert("unable to start checkout");
-  }
-
-}
   
 function changeQuantity(index, change) {
 
